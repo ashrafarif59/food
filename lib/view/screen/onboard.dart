@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food/helper/colors.dart';
-import 'package:food/view/screen/login.dart';
 import 'package:food/widget/button.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helper/image.dart';
 import 'AccountRegister.dart';
+import 'login_screen.dart';
 
 class onBoardPage extends StatefulWidget {
   const onBoardPage({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _onBoardPageState extends State<onBoardPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => loginScreen(),
+                            builder: (context) => LoginScreen(),
                           ));
                     }
                   },
@@ -129,13 +129,15 @@ class _onBoardPageState extends State<onBoardPage> {
 
                       PrimaryButton(Titletype:  pageIndex==2 ? titleType.OnlyTitle : titleType.OnlyIcon,
                                              title: 'Get Started',
+                                             width: pageIndex==2? 70.w : 13.w,
+                                              height: pageIndex==2? 5.h : 6.h,
                                              iconName: Icons.arrow_forward,
                                              onPress: (){
                                                if (pageIndex == 2) {
                                                  Navigator.push(
                                                      context,
                                                      MaterialPageRoute(
-                                                       builder: (context) => accountRegister(),
+                                                       builder: (context) => LoginScreen(),
                                                      ));
                                                } else {
                                                  _controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.bounceIn);

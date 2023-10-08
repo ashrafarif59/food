@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class bgleaveWidget extends StatelessWidget {
   String background;
@@ -15,6 +16,8 @@ class bgleaveWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return   Container(
+      height: 87.h,
+      width: 100.w,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(background),

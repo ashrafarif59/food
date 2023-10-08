@@ -9,10 +9,16 @@ class PrimaryButton extends StatelessWidget {
 
   titleType Titletype;
   String title;
+  double width;
+  double height;
   VoidCallback onPress;
   Color  backgroundColor;
   IconData iconName;
   String image;
+  double imageHeight;
+  double imageWidth;
+  double imagespace;
+
   // Color textColor;
 
   //
@@ -28,7 +34,12 @@ class PrimaryButton extends StatelessWidget {
     required this.Titletype ,
     this.backgroundColor = AppColors.primaryColor,
     this.iconName =Icons.arrow_circle_right,
-    this.image = ''
+    this.image = '',
+    this.imageHeight = 12,
+    this.imageWidth = 15,
+    this.width = 50,
+    this.height = 10,
+    this.imagespace =5,
     // this.textColor = AppColors.whiteColor,
 
     // this.iconName =Icons.arrow_circle_right,
@@ -45,33 +56,34 @@ class PrimaryButton extends StatelessWidget {
     return  GestureDetector(
       onTap: onPress,
       child: Container(
+        width: width,
+        height: height,
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
           borderRadius: BorderRadius.circular(40),
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: 9.sp, vertical: 9.sp),
-          child: Titletype.index == 1
-              ? Center(
-                child: Text(
-            title,
-            style:
-            TextStyle(fontWeight: FontWeight.bold),
-          ),
-              )
-              : Titletype.index == 0 ? Icon(iconName)
-          : Row(
-            children: [
-              Image(image: AssetImage(googlelogos1),height: 10,width: 10,),
-              Text(
-                title,
-                style:
-                TextStyle(fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
+        child: Titletype.index == 1
+            ? Center(
+              child: Text(
+          title,
+          style:
+          TextStyle(fontWeight: FontWeight.bold),
+        ),
+            )
+            : Titletype.index == 0 ? Icon(iconName)
+        : Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(width: 20.sp,),
+            Image(image: AssetImage(googlelogos1),height: imageHeight,width: imageWidth,),
+            SizedBox(width: imagespace.sp,),
+            Text(
+              title,
+              style:
+              TextStyle(fontWeight: FontWeight.bold),
 
+            )
+          ],
         ),
       ),
     );

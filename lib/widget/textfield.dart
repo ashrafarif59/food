@@ -16,6 +16,8 @@ class TextfieldCustom extends StatelessWidget {
   bool ? Iconyn;
   VoidCallback? onPress;
   int? maxLines;
+  double bottomPadding ;
+  double topPadding ;
 
 
   TextfieldCustom({Key? key,required this.label, required this.hinttext,required this.TextController,required this.Keyboardtype, this.obscureText =false,
@@ -23,18 +25,20 @@ class TextfieldCustom extends StatelessWidget {
     this.Iconyn = false,
     this.onPress,
     this.iconcolor,
-    this.maxLines}) : super(key: key);
+    this.maxLines,
+    this.bottomPadding = 1,
+    this.topPadding =1}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding:  EdgeInsets.symmetric(vertical: 1.h),
+      padding:  EdgeInsets.only(top: topPadding.h , bottom: bottomPadding.h ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
           Padding(
-            padding:  EdgeInsets.symmetric(horizontal:2.h),
+            padding:  EdgeInsets.symmetric(horizontal:1.h),
             child: Text(label ?? 'Enter Text', style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 12),),
           ),
           SizedBox(height:.5.h,),
@@ -44,21 +48,21 @@ class TextfieldCustom extends StatelessWidget {
 
             ),
             child: SizedBox(
-              height: 38,
+              height: 32,
               child: TextFormField(
                 obscureText: obscureText ?? false,
                 controller: TextController ,
                 keyboardType: Keyboardtype,
                 maxLines: maxLines ?? 1,
-
+                  style: TextStyle(fontSize: 10 ),
                 decoration: InputDecoration(
                   hintText: hinttext,
 
-               contentPadding:   EdgeInsets.symmetric( horizontal: 3.h),
+               contentPadding:   EdgeInsets.symmetric( horizontal: 2.h),
                   suffixIcon :Iconyn == true ? IconButton(
                     onPressed: onPress,
 
-                    icon: Icon(sufficon,color: iconcolor,),) : null,
+                    icon: Icon(sufficon,color: iconcolor,size: 2.h,),) : null,
                   hintStyle: TextStyle(fontSize: 10 , color: Colors.black),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.primaryColor ,width: 2),
