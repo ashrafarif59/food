@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'package:food/widget/chipfillter.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helper/colors.dart';
@@ -128,7 +129,7 @@ class _HomeState extends State<Home> {
                 child: Text(
                   'Feature Recipe',
                   style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 1.5.h),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 2.h),
                 ),
               ),
               SizedBox(
@@ -181,6 +182,34 @@ class _HomeState extends State<Home> {
                     )
                     )    ,
 
+                ),
+              ),
+              //for padding alignment
+              Padding(
+                padding:  EdgeInsets.only(left: 3.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                     Row(
+                       children: [
+                         Text(
+                          'Categories',
+                          style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 2.h),
+                    ),
+                         Spacer(),
+                         Icon(Icons.arrow_back_ios_new_outlined,size: 15,color: Colors.grey,),
+                         Icon(Icons.arrow_forward_ios_sharp,size: 15,color: AppColors.primaryColor),
+                       ],
+                     ),
+                    Row(
+                      children: [
+                        chipWidget(label: 'All'),
+                        chipWidget(label: 'BBQ')
+                      ],
+                    ),
+
+                  ],
                 ),
               )
             ],
@@ -327,8 +356,8 @@ class _HomeState extends State<Home> {
   Container buildIndicator(int index) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 1.sp),
-      height: 7.sp,
-      width: 7.sp, //currentIndex== index ? 18.sp : 7.sp,
+      height: 8.sp,
+      width: 8.sp, //currentIndex== index ? 18.sp : 7.sp,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: currentIndex == index

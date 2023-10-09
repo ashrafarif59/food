@@ -8,7 +8,7 @@ import '../../widget/button.dart';
 import '../../widget/textfield.dart';
 import 'AccountRegister.dart';
 import 'forgot_password.dart';
-import 'home.dart';
+import 'navigator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => Home(),
+                                        builder: (context) => navigator(),
                                       ));
                                 }),
                           ],
