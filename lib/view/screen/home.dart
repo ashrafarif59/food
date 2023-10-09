@@ -32,8 +32,22 @@ class _HomeState extends State<Home> {
           slivers: [
             SliverAppBar(
               automaticallyImplyLeading: false,
-              title: titleWidget(context),// BuildAppBar(),
-              expandedHeight: 22.h,
+              title: CircleAvatar(
+                child: Image(image: AssetImage(profile)),
+                radius: 3.h,
+                backgroundColor: Colors.white,
+              ),
+              actions: [
+
+                Icon(Icons.notification_important,color: Colors.white,size: 3.5.h,),
+                SizedBox(width: 2.h,),
+                Icon(Icons.list,color: Colors.white,size: 3.5.h),
+                SizedBox(width: 2.h,),
+
+
+
+              ],//titleWidget(context),// BuildAppBar(),
+              expandedHeight: 20.h,
               backgroundColor: Colors.black,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
@@ -43,17 +57,17 @@ class _HomeState extends State<Home> {
 
                     Positioned(
                         left: 3.h,
-                        top:  12.h,
+                        top:  14.h,
                         child: Text('Hello, Jhon',style: TextStyle(color: Colors.grey),)
                     ),
                     Positioned(
                         left: 3.h,
-                        top:  15.h,
+                        top:  17.h,
                         child: Text('Make your own food,',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)
                     ),
                     Positioned(
                         left: 3.h,
-                      top:  18.h,
+                      top:  19.5.h,
                         child:RichText(
                         text: TextSpan(
                           style: TextStyle(color: Colors.white, fontSize: 15),
@@ -75,7 +89,7 @@ class _HomeState extends State<Home> {
                     ),
                     Positioned(
                         right: 1.h,
-                        top:  20.h,
+                        top:  21.h,
                         child: Container(
                          height: 3.5.h,
                           width: 4.h,
@@ -95,36 +109,135 @@ class _HomeState extends State<Home> {
                         ),
                     )
 
-
-
-              //        ImageContainer(movie: movie),
-                //      PlayButton(),
-                //    ShareAndAddButton()
-                  ],
+              ],
                 ),
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (context, index) => Column(
-                  children: [
-                    ListTile(
-                      tileColor: Colors.white,
-                      title: Center(
-                        child: Text(listSoccerPlayers[index],
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: 40,
-                                color: Colors.green) //TextStyle
-                        ), //Text
-                      ), //Center
+            SliverToBoxAdapter(
+              child: Column(
+                //rossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Feature Recipe'),
+                  Transform(
+                    transform:  Matrix4.skewX(-0.18),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 2.h),
+                      height: 15.h,
+                      width: 60.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(11),
+                        //color: Colors.red,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(food),
+                        //scale:23
+
+                        ),
+
+                      ),
+                      child: Container(
+                        height: 15.h,
+                        width: 70.w,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              AppColors.whiteColor.withOpacity(0),
+                              AppColors.blackColor,
+                            ],
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 1.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text('Beef Bihari Boti',
+                                   style: TextStyle(
+                                       fontFamily: 'Poppins',
+                                       fontWeight: FontWeight.w800,
+                                       fontSize: 10.sp,
+                                       color: AppColors.whiteColor
+                                   ),),
+                              Text(
+                                ' by Jacob Jones',
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 7.sp,
+                                    color: AppColors.grayColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                    Divider(height: 3,)
-                  ],
-                ), //ListTile
-                childCount: 11,
-              ), //SliverChildBuildDelegate
+                  )
+                ],
+              )
             ),
+
+            // SliverFixedExtentList(
+            //   itemExtent: 20,
+            //   delegate: SliverChildListDelegate([
+            //     Container(color: Colors.red),
+            //     Container(color: Colors.green),
+            //     Container(color: Colors.blue),
+            //     Container(color: Colors.blueGrey),
+            //   ]),
+            // ),
+            // SliverList(
+            //   delegate: SliverChildBuilderDelegate(
+            //         (context, index) {
+            //       return Container(
+            //         height: 50,
+            //         alignment: Alignment.center,
+            //         color: Colors.orange[100 * (index % 9)],
+            //         child: Text('orange $index'),
+            //       );
+            //     },
+            //     childCount: 9,
+            //   ),
+            // ),
+            // SliverGrid(
+            //   delegate: SliverChildBuilderDelegate(
+            //         (context, index) {
+            //       return Container(
+            //         alignment: Alignment.center,
+            //         color: Colors.teal[100 * (index % 9)],
+            //         child: Text('grid item $index'),
+            //       );
+            //     },
+            //     childCount: 30,
+            //   ),
+            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //     crossAxisCount: 3,
+            //     mainAxisSpacing: 15,
+            //     crossAxisSpacing: 15,
+            //     childAspectRatio: 2.0,
+            //   ),
+            // ),
+            //
+            //
+            // SliverGrid.count(
+            //   crossAxisCount: 3,
+            //   mainAxisSpacing: 10.0,
+            //   crossAxisSpacing: 10.0,
+            //   childAspectRatio: 4.0,
+            //   children: <Widget>[
+            //     Container(color: Colors.red),
+            //     Container(color: Colors.green),
+            //     Container(color: Colors.blue),
+            //     Container(color: Colors.red),
+            //     Container(color: Colors.green),
+            //     Container(color: Colors.blue),
+            //   ],
+            // ),
+            //
+            //
+            //
            ]
       ),
     );
