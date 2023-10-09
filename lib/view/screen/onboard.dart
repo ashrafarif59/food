@@ -144,6 +144,7 @@ class _onBoardPageState extends State<onBoardPage> {
                                                            ));
                                                      } else {
                                                        _controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.bounceIn);
+
                                                      }
 
                                                    }
