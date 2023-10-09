@@ -12,8 +12,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<String> listSoccerPlayers = [];
   @override
   Widget build(BuildContext context) {
+    listSoccerPlayers.add("Cristiano Ronaldo");
+    listSoccerPlayers.add("Lionel Messi");
+    listSoccerPlayers.add("Robert Lewandowski");
+    listSoccerPlayers.add("Neymar Jr.");
+    listSoccerPlayers.add("Kylian Mbappé");
+    listSoccerPlayers.add("Mohamed Salah");
+    listSoccerPlayers.add("Sadio Mane");
+    listSoccerPlayers.add("Kevin de Brune");
+    listSoccerPlayers.add("Antoine Griezmann");
+    listSoccerPlayers.add("Sergio Ramos");
+    listSoccerPlayers.add("Luis Surez");
     return Scaffold(
       body:
       CustomScrollView(
@@ -21,7 +33,7 @@ class _HomeState extends State<Home> {
             SliverAppBar(
               automaticallyImplyLeading: false,
               title: titleWidget(context),// BuildAppBar(),
-              expandedHeight: 25.h,
+              expandedHeight: 22.h,
               backgroundColor: Colors.black,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
@@ -30,21 +42,18 @@ class _HomeState extends State<Home> {
                   children: <Widget>[
 
                     Positioned(
-                        left: 40,
-                        right: 20,
-                        top:  120,
+                        left: 3.h,
+                        top:  12.h,
                         child: Text('Hello, Jhon',style: TextStyle(color: Colors.grey),)
                     ),
                     Positioned(
-                        left: 40,
-                        right: 20,
-                        top:  145,
+                        left: 3.h,
+                        top:  15.h,
                         child: Text('Make your own food,',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)
                     ),
                     Positioned(
-                        left: 40,
-                        right: 20,
-                        top:  170,
+                        left: 3.h,
+                      top:  18.h,
                         child:RichText(
                         text: TextSpan(
                           style: TextStyle(color: Colors.white, fontSize: 15),
@@ -65,11 +74,11 @@ class _HomeState extends State<Home> {
                     ),
                     ),
                     Positioned(
-                        left: 345,
-                        right: 20,
-                        top:  200,
+                        right: 1.h,
+                        top:  20.h,
                         child: Container(
-                         height: 30,
+                         height: 3.5.h,
+                          width: 4.h,
 
                           decoration: BoxDecoration(
                             borderRadius:  BorderRadius.circular(5.0),
@@ -95,6 +104,27 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (context, index) => Column(
+                  children: [
+                    ListTile(
+                      tileColor: Colors.white,
+                      title: Center(
+                        child: Text(listSoccerPlayers[index],
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontSize: 40,
+                                color: Colors.green) //TextStyle
+                        ), //Text
+                      ), //Center
+                    ),
+                    Divider(height: 3,)
+                  ],
+                ), //ListTile
+                childCount: 11,
+              ), //SliverChildBuildDelegate
+            ),
            ]
       ),
     );
@@ -102,18 +132,35 @@ class _HomeState extends State<Home> {
 
   Widget titleWidget(BuildContext context)
   {
-    return Row(
-     mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        CircleAvatar(
-            child: Image(image: AssetImage(profile)),
-          radius: 3.1.h,
-          backgroundColor: Colors.white,
-        ),
-        Spacer(),
-      Icon(Icons.notification_important,color: Colors.white,size: 4.h,),
-        Icon(Icons.list,color: Colors.white,size: 4.h),
-      ],
+    return Padding(
+      padding:  EdgeInsets.only(top: 0.9.h,left: 1.h,right: 1.h),
+      child: Stack(
+        children: [
+
+          Row(
+           mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                  child: Image(image: AssetImage(profile)),
+                radius: 3.h,
+                backgroundColor: Colors.white,
+              ),
+              Spacer(),
+            Icon(Icons.notification_important,color: Colors.white,size: 3.5.h,),
+              SizedBox(width: 2.h,),
+              Icon(Icons.list,color: Colors.white,size: 3.5.h),
+            ],
+          ),
+          Positioned(
+            right: 6.h,
+            top: 3.2.h,
+            child: CircleAvatar(
+              backgroundColor: Colors.red,
+              radius: .5.h,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

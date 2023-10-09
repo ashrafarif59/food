@@ -57,101 +57,117 @@ class _onBoardPageState extends State<onBoardPage> {
           )
         ],
       ),
-      body: PageView.builder(
-         controller: _controller,
-          onPageChanged: (index) {
-            setState(() {
-              pageIndex = index;
-            });
-          },
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 15.sp),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Stack(
-                    children: [
-                      Padding(
-                        padding:  EdgeInsets.symmetric(vertical: pageIndex == 1 ? 30:0 ),
-                        child: pageIndex == 1 ?  Image(image: AssetImage(shadow)) : null,
-                      ),
-                      Container(
-                          height: pageIndex == 1 ? 28.h :40.h,
-                          width: 40.h,
-                          //   color: Colors.red,
-                          child: Image(image: AssetImage(image[index]))),
+      body: Stack(
+        children: [
+          Positioned(
+            child: PageView.builder(
+               controller: _controller,
+                onPageChanged: (index) {
+                  setState(() {
+                    pageIndex = index;
+                  });
+                },
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 15.sp),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Stack(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.symmetric(vertical: pageIndex == 1 ? 30:0 ),
+                              child: pageIndex == 1 ?  Image(image: AssetImage(shadow)) : null,
+                            ),
+                            Container(
+                                height: pageIndex == 1 ? 28.h :40.h,
+                                width: 40.h,
+                                //   color: Colors.red,
+                                child: Image(image: AssetImage(image[index]))),
 
 
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      pageIndex==0?
-                      lineContainer(context) :
-                      Icon(Icons.circle_outlined,size: 1.5.h,color: AppColors.orangeAccent,),
-                      SizedBox(width: 0.2.h,),
-                      pageIndex==1?
-                      lineContainer(context) :
-                      Icon(Icons.circle_outlined,size: 1.5.h,color: AppColors.orangeAccent,),
-                      SizedBox(width: 0.2.h,),
-                      pageIndex==2?
-                      lineContainer(context) :
-                      Icon(Icons.circle_outlined,size: 1.5.h,color: AppColors.orangeAccent,),
-
-
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        title[index],
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 3.h),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        height: 15.sp,
-                      ),
-                      Text(
-                        subtitle[index],
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey,
+                          ],
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     pageIndex==0?
+                        //     lineContainer(context) :
+                        //     Icon(Icons.circle_outlined,size: 1.5.h,color: AppColors.orangeAccent,),
+                        //     SizedBox(width: 0.2.h,),
+                        //     pageIndex==1?
+                        //     lineContainer(context) :
+                        //     Icon(Icons.circle_outlined,size: 1.5.h,color: AppColors.orangeAccent,),
+                        //     SizedBox(width: 0.2.h,),
+                        //     pageIndex==2?
+                        //     lineContainer(context) :
+                        //     Icon(Icons.circle_outlined,size: 1.5.h,color: AppColors.orangeAccent,),
+                        //
+                        //
+                        //   ],
+                        // ),
+                        Column(
+                          children: [
+                            Text(
+                              title[index],
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 3.h),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 15.sp,
+                            ),
+                            Text(
+                              subtitle[index],
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
 
-                      PrimaryButton(Titletype:  pageIndex==2 ? titleType.OnlyTitle : titleType.OnlyIcon,
-                                             title: 'Get Started',
-                                             width: pageIndex==2? 70.w : 13.w,
-                                              height: pageIndex==2? 5.h : 6.h,
-                                             iconName: Icons.arrow_forward,
-                                             onPress: (){
-                                               if (pageIndex == 2) {
-                                                 Navigator.push(
-                                                     context,
-                                                     MaterialPageRoute(
-                                                       builder: (context) => LoginScreen(),
-                                                     ));
-                                               } else {
-                                                 _controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.bounceIn);
-                                               }
+                            PrimaryButton(Titletype:  pageIndex==2 ? titleType.OnlyTitle : titleType.OnlyIcon,
+                                                   title: 'Get Started',
+                                                   width: pageIndex==2? 70.w : 13.w,
+                                                    height: pageIndex==2? 5.h : 6.h,
+                                                   iconName: Icons.arrow_forward,
+                                                   onPress: (){
+                                                     if (pageIndex == 2) {
+                                                       Navigator.push(
+                                                           context,
+                                                           MaterialPageRoute(
+                                                             builder: (context) => LoginScreen(),
+                                                           ));
+                                                     } else {
+                                                       _controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.bounceIn);
+                                                     }
 
-                                             }
-                                            )
+                                                   }
+                                                  )
 
-                    ],
-                  )
-                ],
-              ),
-            );
-          }),
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                }),
+          ),
+          Positioned(
+            top: 45.h,
+            left: 20.h,
+            child:  Row(
+                children: List.generate(title.length, (index) => buildIndicator(index))
+
+
+            ),
+          )
+
+        ],
+      ),
     );
   }
 
@@ -164,4 +180,18 @@ class _onBoardPageState extends State<onBoardPage> {
 
      );
 }
+
+  Container buildIndicator(int index){
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 1.sp),
+      height: 7.sp,
+      width: pageIndex== index ? 18.sp : 7.sp,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: pageIndex == index ? AppColors.primaryColor : Colors.transparent,
+          border: Border.all(color: AppColors.primaryColor)
+      ),
+    );
+  }
+
 }
