@@ -15,8 +15,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentIndex = 0;
+  int choiceListIndex = 0;
   double rating = 4.5;
   List<String> image = [food, ban2, ban3, ban4, ban5, ban6, ban7, food];
+
+  List<String> ChoiceList = ['All', 'BBQ', 'Desert', 'Misc Charges', 'Beverage', 'Cold Coffee'];
 
   @override
   Widget build(BuildContext context) {
@@ -202,12 +205,42 @@ class _HomeState extends State<Home> {
                          Icon(Icons.arrow_forward_ios_sharp,size: 15,color: AppColors.primaryColor),
                        ],
                      ),
-                    Row(
-                      children: [
-                        chipWidget(label: 'All'),
-                        chipWidget(label: 'BBQ')
-                      ],
-                    ),
+
+          Container(
+            height: 5.h,
+            child: ListView.builder(
+                   scrollDirection: Axis.horizontal,
+                     itemCount: ChoiceList.length,
+                     itemBuilder: (context,index)
+              {
+                return  Padding(
+                  padding:  EdgeInsets.only(right:1.h),
+                  child: ChoiceChip(
+                    label: Text(
+                    ChoiceList[index],
+                   style: TextStyle(
+                     color: choiceListIndex ==index ? Colors.white : AppColors.primaryColor
+                   ) ,),
+                      selected: choiceListIndex ==index ? true :false,
+                      selectedColor: AppColors.primaryColor,
+                    disabledColor: Colors.white,
+                    shape:RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+
+
+                  ),
+
+                    onSelected:(isSelected){
+                    setState(() {
+                      choiceListIndex =index;
+                    });
+
+                    } ,
+                  ),
+                );
+              }
+            ),
+          ),
 
                   ],
                 ),
