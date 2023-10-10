@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
-import 'package:food/widget/chipfillter.dart';
+
 import 'package:sizer/sizer.dart';
 
 import '../../helper/colors.dart';
 import '../../helper/image.dart';
+import 'home_component/homeBanner.dart';
+import 'home_component/homeShareVariable.dart';
+import 'home_component/home_sliverAppbar.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -14,118 +17,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int currentIndex = 0;
+  final homVariable  = homeVariable();
   int choiceListIndex = 0;
   double rating = 4.5;
-  List<String> image = [food, ban2, ban3, ban4, ban5, ban6, ban7, food];
 
-  List<String> ChoiceList = [
-    'All',
-    'BBQ',
-    'Desert',
-    'Misc Charges',
-    'Beverage',
-    'Cold Coffee'
-  ];
+
+
 
   @override
   Widget build(BuildContext context) {
-    PageController _controller = PageController(viewportFraction: .85);
+
 
     return Scaffold(
+      //bottomNavigationBar: ,
       body: CustomScrollView(slivers: [
-        SliverAppBar(
-          automaticallyImplyLeading: false,
-          title: CircleAvatar(
-            child: Image(image: AssetImage(profile)),
-            radius: 3.h,
-            backgroundColor: Colors.white,
-          ),
-          actions: [
-            Icon(
-              Icons.notification_important,
-              color: Colors.white,
-              size: 3.5.h,
-            ),
-            SizedBox(
-              width: 2.h,
-            ),
-            Icon(Icons.list, color: Colors.white, size: 3.5.h),
-            SizedBox(
-              width: 2.h,
-            ),
-          ],
-          //titleWidget(context),// BuildAppBar(),
-          expandedHeight: 20.h,
-          backgroundColor: Colors.black,
-          pinned: true,
-          flexibleSpace: FlexibleSpaceBar(
-            // title: titleWidget(context),
-            background: Stack(
-              children: <Widget>[
-                Positioned(
-                    left: 3.h,
-                    top: 14.h,
-                    child: Text(
-                      'Hello, Jhon',
-                      style: TextStyle(color: Colors.grey),
-                    )),
-                Positioned(
-                    left: 3.h,
-                    top: 17.h,
-                    child: Text(
-                      'Make your own food,',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )),
-                Positioned(
-                  left: 3.h,
-                  top: 19.5.h,
-                  child: RichText(
-                    text: TextSpan(
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                      children: [
-                        TextSpan(
-                            text: 'stay at ',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                        TextSpan(
-                          text: ' Home',
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 1.h,
-                  top: 21.h,
-                  child: Container(
-                    height: 3.5.h,
-                    width: 4.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: AppColors.primaryColor, blurRadius: 100)
-                      ],
-                      color: AppColors.primaryColor,
-                      //     borderRadius:
-                    ),
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
+        homeSliverAppBar(),
         SliverToBoxAdapter(
             child: Padding(
           padding: EdgeInsets.only(top: 1.h),
@@ -144,52 +50,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: .5.h,
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  height: 17.h,
-
-                  //width: 90.h,
-                  //color:Colors.red,
-                  child: PageView.builder(
-                      physics: ClampingScrollPhysics(),
-                      itemCount: image.length + 1,
-                      onPageChanged: (index) {
-                        print(index);
-                        if (index > 6) {
-                          _controller.animateToPage(0,
-                              duration: Duration(milliseconds: 50),
-                              curve: Curves.slowMiddle);
-                        }
-
-                        setState(() {
-                          currentIndex = index;
-                        });
-                      },
-                      scrollDirection: Axis.horizontal,
-                      controller:
-                          _controller, //PageController(viewportFraction: 0.5),
-                      //  itemCount:5,
-                      itemBuilder: (context, index) {
-                        return foodBanner(index);
-                      }),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                      image.length - 1,
-                      (index) => InkWell(
-                          onTap: () {
-                            _controller.animateToPage(index,
-                                duration: Duration(milliseconds: 300),
-                                curve: Curves.slowMiddle);
-                          },
-                          child: buildIndicator(index))),
-                ),
-              ),
+              homeBanner(),
               //for padding alignment
               Padding(
                 padding: EdgeInsets.only(left: 3.h),
@@ -273,101 +134,17 @@ class _HomeState extends State<Home> {
               )
             ],
           ),
-        )),
+        )
+        ),
 
 
       ]),
     );
   }
 
-  Widget foodBanner(int index) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: Transform(
-        transform: Matrix4.skewX(-0.10),
-        child: Container(
-          //margin: EdgeInsets.symmetric(horizontal: 7.h),
-          //margin: EdgeInsets.symmetric(horizontal: 5.h),
-          //height: 5.h,
-          //width: 15.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(image[index]),
-              //scale:23
-            ),
-          ),
-          child: Container(
-            //height: 15.h,
-            //width: 70.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  AppColors.whiteColor.withOpacity(0),
-                  AppColors.blackColor,
-                ],
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(left: 1.h, bottom: 1.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Beef Bihari Boti',
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w800,
-                        fontSize: 8.sp,
-                        color: AppColors.whiteColor),
-                  ),
-                  Text(
-                    ' by Jacob Jones',
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w300,
-                        fontSize: 7.sp,
-                        color: AppColors.grayColor),
-                  ),
-                  RatingStars(
-                    value: rating,
-                    onValueChanged: (v) {
-                      //
-                      setState(() {
-                        rating = v;
-                      });
-                    },
-                    starSize: 5.sp,
-                    valueLabelVisibility: false,
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
-  Container buildIndicator(int index) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 1.sp),
-      height: 8.sp,
-      width: 8.sp, //currentIndex== index ? 18.sp : 7.sp,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: currentIndex == index
-              ? AppColors.primaryColor
-              : Colors.grey.shade300
-          //    border: Border.all(color: AppColors.primaryColor)
-          ),
-    );
-  }
+
+
 
   Widget burgerGrid(int Index) {
     return Container(
@@ -480,4 +257,6 @@ class _HomeState extends State<Home> {
         )
     );
   }
+
+
 }
