@@ -249,16 +249,22 @@ class _HomeState extends State<Home> {
                             );
                           }),
                     ),
-                    Container(
-                      height: 20.h,
-                      child: GridView.builder(
-                          itemCount: 2,
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2),
-                          itemBuilder: (context,index)
-                          {
-                            return burgerGrid(index);
-                          }
+                    Padding(
+                      padding: EdgeInsets.only(right: 2.h),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height,
+                        child: GridView.builder(
+                          scrollDirection: Axis.vertical,
+                            itemCount: 16  ,
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                               mainAxisSpacing: 1.5.h,
+                            crossAxisSpacing: 1.5.h),
+                            itemBuilder: (context,index)
+                            {
+                              return burgerGrid(index);
+                            }
+                        ),
                       ),
                     )
 
@@ -365,8 +371,8 @@ class _HomeState extends State<Home> {
 
   Widget burgerGrid(int Index) {
     return Container(
-        height: 20.h,
-        width: 130.sp,
+        height: 15.h,
+        width: 100.sp,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           image: DecorationImage(
@@ -376,8 +382,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         child: Container(
-          //height: 15.h,
-          //width: 70.w,
+
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             gradient: LinearGradient(
