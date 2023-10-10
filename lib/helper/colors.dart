@@ -14,6 +14,9 @@ class AppColors{
 
   static const  orangeAccent = Color.fromRGBO(247, 187, 14, 1);
 
+  static const  tranparentburger = Color.fromRGBO(0, 0, 0, 0.3);
+
+
 
   static const graywhite = Color.fromRGBO(217, 217, 217, 1);
 

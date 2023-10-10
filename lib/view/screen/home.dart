@@ -19,7 +19,14 @@ class _HomeState extends State<Home> {
   double rating = 4.5;
   List<String> image = [food, ban2, ban3, ban4, ban5, ban6, ban7, food];
 
-  List<String> ChoiceList = ['All', 'BBQ', 'Desert', 'Misc Charges', 'Beverage', 'Cold Coffee'];
+  List<String> ChoiceList = [
+    'All',
+    'BBQ',
+    'Desert',
+    'Misc Charges',
+    'Beverage',
+    'Cold Coffee'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -131,8 +138,7 @@ class _HomeState extends State<Home> {
                 ),
                 child: Text(
                   'Feature Recipe',
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 2.h),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 2.h),
                 ),
               ),
               SizedBox(
@@ -170,77 +176,91 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.only(top: 1.h,bottom: 1.h),
+                padding: EdgeInsets.only(top: 1.h, bottom: 1.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                    children:
-                    List.generate(
-                        image.length-1, (index) => InkWell(
-                      onTap: (){
-                        _controller.animateToPage(index,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.slowMiddle);
-                      },
-                        child: buildIndicator(index)
-                    )
-                    )    ,
-
+                  children: List.generate(
+                      image.length - 1,
+                      (index) => InkWell(
+                          onTap: () {
+                            _controller.animateToPage(index,
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.slowMiddle);
+                          },
+                          child: buildIndicator(index))),
                 ),
               ),
               //for padding alignment
               Padding(
-                padding:  EdgeInsets.only(left: 3.h),
+                padding: EdgeInsets.only(left: 3.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     Row(
-                       children: [
-                         Text(
+                    Row(
+                      children: [
+                        Text(
                           'Categories',
-                          style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 2.h),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 2.h),
+                        ),
+                        Spacer(),
+                        Icon(
+                          Icons.arrow_back_ios_new_outlined,
+                          size: 15,
+                          color: Colors.grey,
+                        ),
+                        Icon(Icons.arrow_forward_ios_sharp,
+                            size: 15, color: AppColors.primaryColor),
+                      ],
                     ),
-                         Spacer(),
-                         Icon(Icons.arrow_back_ios_new_outlined,size: 15,color: Colors.grey,),
-                         Icon(Icons.arrow_forward_ios_sharp,size: 15,color: AppColors.primaryColor),
-                       ],
-                     ),
-
-          Container(
-            height: 5.h,
-            child: ListView.builder(
-                   scrollDirection: Axis.horizontal,
-                     itemCount: ChoiceList.length,
-                     itemBuilder: (context,index)
-              {
-                return  Padding(
-                  padding:  EdgeInsets.only(right:1.h),
-                  child: ChoiceChip(
-                    label: Text(
-                    ChoiceList[index],
-                   style: TextStyle(
-                     color: choiceListIndex ==index ? Colors.white : AppColors.primaryColor
-                   ) ,),
-                      selected: choiceListIndex ==index ? true :false,
-                      selectedColor: AppColors.primaryColor,
-                    disabledColor: Colors.white,
-                    shape:RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-
-
-                  ),
-
-                    onSelected:(isSelected){
-                    setState(() {
-                      choiceListIndex =index;
-                    });
-
-                    } ,
-                  ),
-                );
-              }
-            ),
-          ),
+                    Container(
+                      height: 5.h,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: ChoiceList.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(right: 1.h),
+                              child: ChoiceChip(
+                                label: Text(
+                                  ChoiceList[index],
+                                  style: TextStyle(
+                                      color: choiceListIndex == index
+                                          ? Colors.white
+                                          : AppColors.primaryColor),
+                                ),
+                                selected:
+                                    choiceListIndex == index ? true : false,
+                                //elevation: 20,
+                                visualDensity: const VisualDensity(
+                                    vertical: -4, horizontal: -4),
+                                selectedColor: AppColors.primaryColor,
+                                disabledColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                side: BorderSide(color: AppColors.primaryColor),
+                                onSelected: (isSelected) {
+                                  setState(() {
+                                    choiceListIndex = index;
+                                  });
+                                },
+                              ),
+                            );
+                          }),
+                    ),
+                    Container(
+                      height: 20.h,
+                      child: GridView.builder(
+                          itemCount: 2,
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2),
+                          itemBuilder: (context,index)
+                          {
+                            return burgerGrid(index);
+                          }
+                      ),
+                    )
 
                   ],
                 ),
@@ -249,65 +269,7 @@ class _HomeState extends State<Home> {
           ),
         )),
 
-        // SliverFixedExtentList(
-        //   itemExtent: 20,
-        //   delegate: SliverChildListDelegate([
-        //     Container(color: Colors.red),
-        //     Container(color: Colors.green),
-        //     Container(color: Colors.blue),
-        //     Container(color: Colors.blueGrey),
-        //   ]),
-        // ),
-        // SliverList(
-        //   delegate: SliverChildBuilderDelegate(
-        //         (context, index) {
-        //       return Container(
-        //         height: 50,
-        //         alignment: Alignment.center,
-        //         color: Colors.orange[100 * (index % 9)],
-        //         child: Text('orange $index'),
-        //       );
-        //     },
-        //     childCount: 9,
-        //   ),
-        // ),
-        // SliverGrid(
-        //   delegate: SliverChildBuilderDelegate(
-        //         (context, index) {
-        //       return Container(
-        //         alignment: Alignment.center,
-        //         color: Colors.teal[100 * (index % 9)],
-        //         child: Text('grid item $index'),
-        //       );
-        //     },
-        //     childCount: 30,
-        //   ),
-        //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //     crossAxisCount: 3,
-        //     mainAxisSpacing: 15,
-        //     crossAxisSpacing: 15,
-        //     childAspectRatio: 2.0,
-        //   ),
-        // ),
-        //
-        //
-        // SliverGrid.count(
-        //   crossAxisCount: 3,
-        //   mainAxisSpacing: 10.0,
-        //   crossAxisSpacing: 10.0,
-        //   childAspectRatio: 4.0,
-        //   children: <Widget>[
-        //     Container(color: Colors.red),
-        //     Container(color: Colors.green),
-        //     Container(color: Colors.blue),
-        //     Container(color: Colors.red),
-        //     Container(color: Colors.green),
-        //     Container(color: Colors.blue),
-        //   ],
-        // ),
-        //
-        //
-        //
+
       ]),
     );
   }
@@ -396,8 +358,121 @@ class _HomeState extends State<Home> {
           color: currentIndex == index
               ? AppColors.primaryColor
               : Colors.grey.shade300
-      //    border: Border.all(color: AppColors.primaryColor)
-      ),
+          //    border: Border.all(color: AppColors.primaryColor)
+          ),
+    );
+  }
+
+  Widget burgerGrid(int Index) {
+    return Container(
+        height: 20.h,
+        width: 130.sp,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage(burger),
+            //scale:23
+          ),
+        ),
+        child: Container(
+          //height: 15.h,
+          //width: 70.w,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                AppColors.whiteColor.withOpacity(0),
+                Colors.black,
+              ],
+            ),
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                right: 1.h,
+                top: 1.h,
+                child: CircleAvatar(
+                  backgroundColor: AppColors.tranparentburger,
+                  radius: 15,
+                  child: Icon(
+                    Icons.favorite,
+                    color: AppColors.primaryColor,
+                    size: 16,
+                  ),
+                ),
+              ),
+              Positioned(
+                  top: 13.h,
+                  left: 2.h,
+                  child: Text(
+                    'Crispy Beef Burger',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  )
+              ),
+              Positioned(
+                  top: 15.5.h,
+                  left: 2.h,
+                  child: Text(
+                    'by Jhon Jones',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 10,
+
+                    ),
+                  )
+              ),
+              Positioned(
+                top: 18.h,
+                left: 2.h,
+                child: RatingStars(
+                  value: rating,
+                  onValueChanged: (v) {
+                    //
+                    setState(() {
+                      rating = v;
+                    });
+                  },
+                  starSize: 8.sp,
+                  valueLabelVisibility: false,
+                ),
+              ),
+              Positioned(
+                top: 17.9.h,
+                left: 10.h,
+                child: Text('4.5',
+                style :TextStyle(
+                  color: Colors.white,
+                  fontSize: 10
+                )
+                )
+              ),
+              Positioned(
+                  top: 17.9.h,
+                  right: 1.7.h,
+                  child: Icon(Icons.alarm,
+                  color: Colors.white,
+                  size: 10,)
+
+              ),
+              Positioned(
+                  top: 17.9.h,
+                  right: 1.5.h,
+                  child: Text('30 min',
+                      style :TextStyle(
+                          color: Colors.white,
+                          fontSize: 10
+                      )
+                  )
+              )
+            ],
+          ),
+        )
     );
   }
 }

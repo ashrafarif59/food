@@ -17,3 +17,5 @@ const ban4 = 'assets/images/ban4.jpg';
 const ban5 = 'assets/images/ban5.jpg';
 const ban6 = 'assets/images/ban6.jpg';
 const ban7 = 'assets/images/ban7.jpg';
+
+const burger = 'assets/images/burger.jpg';
