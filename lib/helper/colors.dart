@@ -16,6 +16,7 @@ class AppColors{
 
   static const  tranparentburger = Color.fromRGBO(0, 0, 0, 0.3);
 
+  static const graypic =Color.fromRGBO (202, 202, 202, 1);
 
 
   static const graywhite = Color.fromRGBO(217, 217, 217, 1);

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-
-
-
-import 'package:sizer/sizer.dart';import '../../../helper/colors.dart';
+import 'package:sizer/sizer.dart';
+import '../../../helper/colors.dart';
 import '../../../helper/image.dart';
+
 
 class homeSliverAppBar extends StatelessWidget {
   const homeSliverAppBar({super.key});
@@ -27,7 +26,11 @@ class homeSliverAppBar extends StatelessWidget {
         SizedBox(
           width: 2.h,
         ),
-        Icon(Icons.list, color: Colors.white, size: 3.5.h),
+        IconButton(
+            onPressed: (){
+            //   homeDrawer();
+            },
+            icon: Icon(Icons.list, color: Colors.white, size: 3.5.h)),
         SizedBox(
           width: 2.h,
         ),
@@ -65,8 +68,7 @@ class homeSliverAppBar extends StatelessWidget {
                     TextSpan(
                         text: 'stay at ',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold)),
+                            color: Colors.white, fontWeight: FontWeight.bold)),
                     TextSpan(
                       text: ' Home',
                       style: TextStyle(
@@ -87,8 +89,7 @@ class homeSliverAppBar extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
                   boxShadow: [
-                    BoxShadow(
-                        color: AppColors.primaryColor, blurRadius: 100)
+                    BoxShadow(color: AppColors.primaryColor, blurRadius: 100)
                   ],
                   color: AppColors.primaryColor,
                   //     borderRadius:

@@ -30,7 +30,16 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       //bottomNavigationBar: ,
-      body: CustomScrollView(slivers: [
+      // appBar: AppBar(
+      //   title:Text('asdf')
+      // ),
+      // endDrawer: Drawer(
+      //     child:Text('as',selectionColor: Colors.white,)
+      // ),
+      body: CustomScrollView(
+
+          slivers: [
+
         homeSliverAppBar(),
         SliverToBoxAdapter(
             child: Padding(
@@ -166,7 +175,7 @@ class _HomeState extends State<Home> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                AppColors.whiteColor.withOpacity(0),
+                AppColors.primaryColor.withOpacity(0),
                 Colors.black,
               ],
             ),

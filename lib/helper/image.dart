@@ -21,4 +21,10 @@ const ban7 = 'assets/images/ban7.jpg';
 
 const burger = 'assets/images/burger.jpg';
 
+const bbq  = 'assets/images/bbq.jpg';
+
+const cake ='assets/images/cake.jpg';
+const donut ='assets/images/donut.jpg';
+const cameral ='assets/images/cameral.jpg';
+
 
