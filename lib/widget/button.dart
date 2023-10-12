@@ -19,7 +19,8 @@ class PrimaryButton extends StatelessWidget {
   double imageWidth;
   double imagespace;
 
-  // Color textColor;
+
+   Color textColor;
 
   //
   // Color iconNameColor;
@@ -40,7 +41,8 @@ class PrimaryButton extends StatelessWidget {
     this.width = 50,
     this.height = 10,
     this.imagespace =5,
-    // this.textColor = AppColors.whiteColor,
+     this.textColor = AppColors.blackColor,
+
 
     // this.iconName =Icons.arrow_circle_right,
     // this.iconNameColor = AppColors.whiteColor,
@@ -59,7 +61,7 @@ class PrimaryButton extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(40),
         ),
         child: Titletype.index == 1
@@ -67,7 +69,8 @@ class PrimaryButton extends StatelessWidget {
               child: Text(
           title,
           style:
-          TextStyle(fontWeight: FontWeight.bold),
+          TextStyle(fontWeight: FontWeight.bold,
+          color: textColor),
         ),
             )
             : Titletype.index == 0 ? Icon(iconName)

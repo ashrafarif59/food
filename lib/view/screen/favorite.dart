@@ -54,13 +54,13 @@ class Favorite extends StatelessWidget {
             backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
             leading: IconButton(
-              onPressed: (){
-                Navigator.pop(context);
-              },
+                onPressed: (){
+                  Navigator.pop(context);
+                },
                 icon: Icon(
-              Icons.arrow_back_ios_new,
-              size: 2.h,
-            )),
+                  Icons.arrow_back_ios_new,
+                  size: 2.h,
+                )),
           ),
         ),
         body: Container(
@@ -73,7 +73,7 @@ class Favorite extends StatelessWidget {
                     Divider(),
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.h),
+                      EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.h),
                       child: Row(
                         children: [
                           Text(
@@ -228,11 +228,11 @@ class CategoryList {
   List<String>? productBy;
   CategoryList(
       {this.categoryName,
-      this.productImage,
-      this.productName,
-      this.productRating,
-      this.productTimer,
-      this.productBy});
+        this.productImage,
+        this.productName,
+        this.productRating,
+        this.productTimer,
+        this.productBy});
 }
 //
 // class studentName {

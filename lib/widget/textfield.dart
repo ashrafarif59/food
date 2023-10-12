@@ -18,6 +18,9 @@ class TextfieldCustom extends StatelessWidget {
   int? maxLines;
   double bottomPadding ;
   double topPadding ;
+  Color borderColor;
+  Color fillColor;
+  bool avatarOnIcon;
 
 
   TextfieldCustom({Key? key,required this.label, required this.hinttext,required this.TextController,required this.Keyboardtype, this.obscureText =false,
@@ -27,7 +30,11 @@ class TextfieldCustom extends StatelessWidget {
     this.iconcolor,
     this.maxLines,
     this.bottomPadding = 1,
-    this.topPadding =1}) : super(key: key);
+    this.topPadding =1,
+   this.borderColor=AppColors.primaryColor,
+    this.fillColor=AppColors.whiteColor,
+    this.avatarOnIcon = false
+}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,21 +64,23 @@ class TextfieldCustom extends StatelessWidget {
                   style: TextStyle(fontSize: 10 ),
                 decoration: InputDecoration(
                   hintText: hinttext,
-
+                  fillColor: fillColor,
                contentPadding:   EdgeInsets.symmetric( horizontal: 2.h),
-                  suffixIcon :Iconyn == true ? IconButton(
+                  suffixIcon :avatarOnIcon == true ?null
+                  : Iconyn == true ? IconButton(
                     onPressed: onPress,
 
-                    icon: Icon(sufficon,color: iconcolor,size: 2.h,),) : null,
+                    icon: Icon(sufficon,color: iconcolor,size: 2.h,),
+                  ) : null,
                   hintStyle: TextStyle(fontSize: 10 , color: Colors.black),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.primaryColor ,width: 2),
+                      borderSide: BorderSide(color: borderColor ,width: 2),
                       borderRadius: BorderRadius.circular(20)
 
 
                   ),
                   enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.primaryColor ,width: 2),
+                      borderSide: BorderSide(color: borderColor ,width: 2),
                       borderRadius: BorderRadius.circular(20)
 
                   ),
