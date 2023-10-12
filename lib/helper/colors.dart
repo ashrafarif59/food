@@ -21,6 +21,10 @@ class AppColors{
 
   static const graywhite = Color.fromRGBO(217, 217, 217, 1);
 
+  static const grayshade = Color.fromRGBO(220, 220, 220, 0.01);
+  //static const grayshade = Color.fromRGBO(192, 192, 192, 0.38);
+
+
   static const mobileBackgroundColor = Color.fromRGBO(0, 0, 0, 1);
   static const webBackgroundColor = Color.fromRGBO(18, 18, 18, 1);
   static const mobileSearchColor = Color.fromRGBO(38, 38, 38, 1);

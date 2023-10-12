@@ -8,6 +8,8 @@ const leavebg = 'assets/images/leavebg.png';
 const googlelogos1 = 'assets/images/brand.png';
 const forgotpassword = 'assets/images/forgotpassword1.png';
 const profile ='assets/images/profile.png';
+const profileImage ='assets/images/Ellipse19.png';
+
 const rectangle = 'assets/images/Rectangle.png';
 const food = 'assets/images/food.jpg';
 

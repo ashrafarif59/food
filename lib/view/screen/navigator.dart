@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/helper/colors.dart';
+import 'package:food/view/profile.dart';
 import 'package:sizer/sizer.dart';
 
 import 'favorite.dart';
@@ -22,7 +23,7 @@ class _navigatorState extends State<navigator> {
   final List layout =[
     Home(),
     Favorite(),
-    Home(),
+    profile(),
   ];
 
   @override
