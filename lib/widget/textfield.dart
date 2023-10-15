@@ -21,6 +21,10 @@ class TextfieldCustom extends StatelessWidget {
   Color borderColor;
   Color fillColor;
   bool avatarOnIcon;
+  Widget? Imagechild;
+  IconData? prefixicon;
+  Color? preIconColor;
+  bool? preIconyn;
 
 
   TextfieldCustom({Key? key,required this.label, required this.hinttext,required this.TextController,required this.Keyboardtype, this.obscureText =false,
@@ -33,7 +37,11 @@ class TextfieldCustom extends StatelessWidget {
     this.topPadding =1,
    this.borderColor=AppColors.primaryColor,
     this.fillColor=AppColors.whiteColor,
-    this.avatarOnIcon = false
+    this.avatarOnIcon = false,
+    this.Imagechild,
+    this.prefixicon,
+    this.preIconColor,
+    this.preIconyn = false,
 }) : super(key: key);
 
   @override
@@ -65,12 +73,23 @@ class TextfieldCustom extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: hinttext,
                   fillColor: fillColor,
+               prefixIcon:
+               preIconyn == false ?
+                null :
+                Icon(prefixicon,
+                               color : preIconColor,
+                              size: 2.h),
                contentPadding:   EdgeInsets.symmetric( horizontal: 2.h),
-                  suffixIcon :avatarOnIcon == true ?null
+                  suffixIcon : avatarOnIcon == true ?Imagechild
                   : Iconyn == true ? IconButton(
                     onPressed: onPress,
 
-                    icon: Icon(sufficon,color: iconcolor,size: 2.h,),
+                   icon: Icon(sufficon,color: iconcolor,size: 2.h,),
+                   //  icon: FaIcon(
+                   //    FontAwesomeIcons.edit,
+                   //    color: Color(0xFF757575),
+                   //    size: 22,
+                   //  ),
                   ) : null,
                   hintStyle: TextStyle(fontSize: 10 , color: Colors.black),
                   focusedBorder: OutlineInputBorder(

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppColors{
   static const primaryColor = Color.fromRGBO(247, 187, 14, 1);
+  static const primaryLightColor = Color.fromRGBO(252, 224, 141, 1);
+
+
   static const Color whiteColor = Colors.white;
 
   static const Color buttonColor = Colors.green;
@@ -22,6 +25,8 @@ class AppColors{
   static const graywhite = Color.fromRGBO(217, 217, 217, 1);
 
   static const grayshade = Color.fromRGBO(220, 220, 220, 0.01);
+
+
   //static const grayshade = Color.fromRGBO(192, 192, 192, 0.38);
 
 

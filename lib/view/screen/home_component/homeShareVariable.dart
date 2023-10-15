@@ -21,3 +21,14 @@ List<String> ChoiceList = [
   'Beverage',
   'Cold Coffee'
 ];
+
+List<String> RecepiChoiceList = [
+  'Chiken Wings Recipe',
+  'Chiken Recipe',
+  'Chiken Recipe',
+  'Chiken Wings Recipe',
+  'Chiken Wings Recipe',
+  'Chiken Recipe',
+  'Chiken Recipe',
+  'Chiken Wings Recipe'
+];

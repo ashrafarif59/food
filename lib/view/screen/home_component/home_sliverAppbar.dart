@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food/view/screen/notification.dart';
+import 'package:food/view/screen/search.dart';
 
 import 'package:sizer/sizer.dart';
 import '../../../helper/colors.dart';
@@ -18,19 +20,29 @@ class homeSliverAppBar extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       actions: [
-        Icon(
-          Icons.notification_important,
-          color: Colors.white,
-          size: 3.5.h,
+        IconButton(
+          onPressed: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => notification(),
+                ));
+          },
+         icon: Icon(
+            Icons.notification_important,
+            color: Colors.white,
+            size: 3.5.h,
+          ),
         ),
         SizedBox(
           width: 2.h,
         ),
         IconButton(
             onPressed: (){
-            //   homeDrawer();
+            Scaffold.of(context).openEndDrawer();
             },
-            icon: Icon(Icons.list, color: Colors.white, size: 3.5.h)),
+            icon: Icon(Icons.list, color: Colors.white, size: 3.5.h),
+        ),
         SizedBox(
           width: 2.h,
         ),
@@ -83,20 +95,29 @@ class homeSliverAppBar extends StatelessWidget {
             Positioned(
               right: 1.h,
               top: 21.h,
-              child: Container(
-                height: 3.5.h,
-                width: 4.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  boxShadow: [
-                    BoxShadow(color: AppColors.primaryColor, blurRadius: 100)
-                  ],
-                  color: AppColors.primaryColor,
-                  //     borderRadius:
-                ),
-                child: Icon(
-                  Icons.search,
-                  color: Colors.white,
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => search(),
+                    ));
+                  },
+                child: Container(
+                  height: 3.5.h,
+                  width: 4.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    boxShadow: [
+                      BoxShadow(color: AppColors.primaryColor, blurRadius: 100)
+                    ],
+                    color: AppColors.primaryColor,
+                    //     borderRadius:
+                  ),
+                  child: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             )

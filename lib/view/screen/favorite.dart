@@ -4,6 +4,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../helper/colors.dart';
 import '../../helper/image.dart';
+import 'drawer.dart';
 
 class Favorite extends StatelessWidget {
   Favorite({Key? key}) : super(key: key);
@@ -43,6 +44,7 @@ class Favorite extends StatelessWidget {
     ];
 
     return Scaffold(
+       endDrawer: drawerWidget(),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(5.h),
           child: AppBar(

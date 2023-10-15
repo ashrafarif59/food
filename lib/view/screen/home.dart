@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'package:food/view/screen/drawer.dart';
 
 import 'package:sizer/sizer.dart';
 
@@ -29,122 +30,121 @@ class _HomeState extends State<Home> {
 
 
     return Scaffold(
-      //bottomNavigationBar: ,
-      // appBar: AppBar(
-      //   title:Text('asdf')
-      // ),
-      // endDrawer: Drawer(
-      //     child:Text('as',selectionColor: Colors.white,)
-      // ),
+      endDrawer: drawerWidget(),
       body: CustomScrollView(
 
           slivers: [
 
         homeSliverAppBar(),
-        SliverToBoxAdapter(
-            child: Padding(
-          padding: EdgeInsets.only(top: 1.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 3.h,
-                ),
-                child: Text(
-                  'Feature Recipe',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 2.h),
-                ),
-              ),
-              SizedBox(
-                height: .5.h,
-              ),
-              homeBanner(),
-              //for padding alignment
-              Padding(
-                padding: EdgeInsets.only(left: 3.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Categories',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 2.h),
+            SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 1.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 3.h,
                         ),
-                        Spacer(),
-                        Icon(
-                          Icons.arrow_back_ios_new_outlined,
-                          size: 15,
-                          color: Colors.grey,
-                        ),
-                        Icon(Icons.arrow_forward_ios_sharp,
-                            size: 15, color: AppColors.primaryColor),
-                      ],
-                    ),
-                    Container(
-                      height: 5.h,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: ChoiceList.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 1.h),
-                              child: ChoiceChip(
-                                label: Text(
-                                  ChoiceList[index],
-                                  style: TextStyle(
-                                      color: choiceListIndex == index
-                                          ? Colors.white
-                                          : AppColors.primaryColor),
-                                ),
-                                selected:
-                                    choiceListIndex == index ? true : false,
-                                //elevation: 20,
-                                visualDensity: const VisualDensity(
-                                    vertical: -4, horizontal: -4),
-                                selectedColor: AppColors.primaryColor,
-                                disabledColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                side: BorderSide(color: AppColors.primaryColor),
-                                onSelected: (isSelected) {
-                                  setState(() {
-                                    choiceListIndex = index;
-                                  });
-                                },
-                              ),
-                            );
-                          }),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 2.h),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height,
-                        child: GridView.builder(
-                          scrollDirection: Axis.vertical,
-                            itemCount: 16  ,
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                               mainAxisSpacing: 1.5.h,
-                            crossAxisSpacing: 1.5.h),
-                            itemBuilder: (context,index)
-                            {
-                              return burgerGrid(index);
-                            }
+                        child: Text(
+                          'Feature Recipe',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 2.h),
                         ),
                       ),
-                    )
+                      SizedBox(
+                        height: .5.h,
+                      ),
+                      homeBanner(),
+                      //for padding alignment
+                      Padding(
+                        padding: EdgeInsets.only(left: 3.h),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Categories',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 2.h),
+                                ),
+                                Spacer(),
+                                Icon(
+                                  Icons.arrow_back_ios_new_outlined,
+                                  size: 15,
+                                  color: Colors.grey,
+                                ),
+                                Icon(Icons.arrow_forward_ios_sharp,
+                                    size: 15, color: AppColors.primaryColor),
+                              ],
+                            ),
+                            Container(
+                              height: 5.h,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: ChoiceList.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(right: 1.h),
+                                      child: ChoiceChip(
+                                        label: Text(
+                                          ChoiceList[index],
+                                          style: TextStyle(
+                                              color: choiceListIndex == index
+                                                  ? Colors.white
+                                                  : AppColors.primaryColor),
+                                        ),
+                                        selected:
+                                        choiceListIndex == index ? true : false,
+                                        //elevation: 20,
+                                        visualDensity: const VisualDensity(
+                                            vertical: -4, horizontal: -4),
+                                        selectedColor: AppColors.primaryColor,
+                                        disabledColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        side: BorderSide(color: AppColors.primaryColor),
+                                        onSelected: (isSelected) {
+                                          setState(() {
+                                            choiceListIndex = index;
+                                          });
+                                        },
+                                      ),
+                                    );
+                                  }),
+                            ),
 
-                  ],
-                ),
-              )
-            ],
-          ),
-        )
-        ),
+                            Padding(
+                              padding: EdgeInsets.only(right: 2.h),
+                              child: Container(
+                                height: MediaQuery.of(context).size.height,
+                                child:
+                                GridView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: 16  ,
+                                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+
+                                        crossAxisCount: 2,
+                                        mainAxisSpacing: 1.5.h,
+                                        crossAxisSpacing: 1.5.h
+                                    ),
+                                    itemBuilder: (context,index)
+                                    {
+                                      return burgerGrid(index);
+
+                                    }
+                                ),
+                              ),
+                            )
+
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                )
+            ),
 
 
       ]),
