@@ -39,57 +39,110 @@ class TextFieldContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      Center(
-        child: Container(
-          height: 5.h,
-          decoration: BoxDecoration(
-              borderRadius:  BorderRadius.circular(10.0),
-              border: Border.all(
-                  //color: Colors.red,
-                  width: 0
+    //  SvgPicture.asset(icononsearch,fit: BoxFit.scaleDown,);
+        Padding(
+          padding:  EdgeInsets.only(top: 2.h, left: 3.h,right: 3.h),
+          child: Material(
+            elevation: 10,
+            shadowColor: AppColors.grayshade.withOpacity(.5),
+              borderRadius :BorderRadius.circular(10),
+         //color: Colors.blue,
+            child: TextFormField(
+              controller: TextController,
+
+
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.only(bottom: .5.h),
+                fillColor: Colors.white,
+              constraints: BoxConstraints(
+                maxHeight: 5.h
+
               ),
-             color: Colors.white,
-               boxShadow: [
 
-           BoxShadow(
-           color: AppColors.grayColor.withOpacity(.5),
-             blurRadius: 2.h,
-        //offset: Offset(0, 3.h)
-             ),
-         ]
-          ),
-          child: Row(
-            children: [
-              Icon(Icons.search,size: 3.h,color: Colors.black,),
-              SizedBox(
-                width: MediaQuery.of(context).size.width*.75,
-                child: TextField(
-                  controller: TextController,
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white ,width: 2,style: BorderStyle.solid),
+                    borderRadius: BorderRadius.circular(20),
 
-                  decoration: InputDecoration(
-
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black ,width: 1),
-                                  //borderRadius: BorderRadius.circular(20)
-
-
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black ,width: 1),
-                                  //borderRadius: BorderRadius.circular(20)
-
-                              ),
-                  ),
                 ),
-              ),
-              SvgPicture(
 
-                  asset(icononsearch)
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white ,width: 2,
+                    style: BorderStyle.solid),
+                    borderRadius: BorderRadius.circular(20),
+
+
+                ),
+
+              prefixIcon: Icon(Icons.search,color: Colors.black,),
+              suffixIcon: Padding(
+                padding:  EdgeInsets.only(right: 1.h),
+                child: Container(
+                  margin: EdgeInsets.all(1.h),
+                  decoration: BoxDecoration(
+
+                    borderRadius: BorderRadius.circular(5),
+                    color: AppColors.primaryColor,
+                  ),
+
+
+
+                    child: Image.asset(icononsearch,fit: BoxFit.scaleDown,)),
               )
-            ],
+               )
+            ),
           ),
-        ),
-      );
+        );
+      // Center(
+      //   child: Container(
+      //     height: 5.h,
+      //     decoration: BoxDecoration(
+      //         borderRadius:  BorderRadius.circular(10.0),
+      //         border: Border.all(
+      //             //color: Colors.red,
+      //             width: 0
+      //         ),
+      //        color: Colors.white,
+      //          boxShadow: [
+      //
+      //      BoxShadow(
+      //      color: AppColors.grayColor.withOpacity(.5),
+      //        blurRadius: 2.h,
+      //   //offset: Offset(0, 3.h)
+      //        ),
+      //    ]
+      //     ),
+      //     child: Row(
+      //       children: [
+      //         Icon(Icons.search,size: 3.h,color: Colors.black,),
+      //         SizedBox(
+      //           width: MediaQuery.of(context).size.width*.75,
+      //           child: TextField(
+      //             controller: TextController,
+      //
+      //             decoration: InputDecoration(
+      //
+      //                         focusedBorder: OutlineInputBorder(
+      //                             borderSide: BorderSide(color: Colors.black ,width: 1),
+      //                             //borderRadius: BorderRadius.circular(20)
+      //
+      //
+      //                         ),
+      //                         enabledBorder: OutlineInputBorder(
+      //                             borderSide: BorderSide(color: Colors.black ,width: 1),
+      //                             //borderRadius: BorderRadius.circular(20)
+      //
+      //                         ),
+      //             ),
+      //           ),
+      //         ),
+      //         SvgPicture(
+      //
+      //         //    asset(icononsearch)
+      //         )
+      //       ],
+      //     ),
+      //   ),
+      // );
         // Padding(
         //   padding:  EdgeInsets.only(top: 3.h),
         //   child: Container(
