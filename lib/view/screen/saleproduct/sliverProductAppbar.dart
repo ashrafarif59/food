@@ -10,11 +10,13 @@ import '../../../helper/image.dart';
 class sliverProductAppbar extends StatelessWidget {
   String title_name;
   double height;
+  double scrolledupValue;
   bool showRoundedContainer;
    sliverProductAppbar({super.key,
   this.title_name='Crispy Beef Burger',
   this.height=40,
-  this.showRoundedContainer=true
+  this.showRoundedContainer=true,
+     this.scrolledupValue =1.0
   });
 
   @override
@@ -22,10 +24,12 @@ class sliverProductAppbar extends StatelessWidget {
     return SliverAppBar(
       title: Text(title_name,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
       expandedHeight: height.h,
-
+      //collapsedHeight:7.h,
         centerTitle: true,
+        pinned: true,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
+        backgroundColor: scrolledupValue>=151 ? Colors.black :Colors.white,
+
         leading: IconButton(
             onPressed: (){
               Navigator.pop(context);
@@ -40,7 +44,7 @@ class sliverProductAppbar extends StatelessWidget {
         background: Padding(
           padding:  EdgeInsets.only(bottom: 1),
           child: ContainerImageproduct(),
-        ),
+          ),
     ),
       bottom: showRoundedContainer ? PreferredSize(
         preferredSize:  Size.fromHeight(0.h),

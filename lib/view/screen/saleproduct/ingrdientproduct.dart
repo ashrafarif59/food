@@ -48,7 +48,7 @@ class ingrdientproduct extends StatelessWidget {
       context: context,
       removeTop: true,
       child: ListView.builder(
-
+          physics: NeverScrollableScrollPhysics(),
           itemCount: ingrdientListClass.length,
           itemBuilder: (context,index)
           {

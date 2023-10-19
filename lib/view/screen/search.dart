@@ -92,8 +92,8 @@ class _searchState extends State<search> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 TextFieldContainer(
-                  label: '',
-                  hinttext: '',
+                  label: 'Name',
+                  hinttext: 'Search Recipe here1',
                   TextController: search,
                   Keyboardtype: TextInputType.text
                 ),

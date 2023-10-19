@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:food/view/saleProduct.dart';
 import 'package:food/view/screen/drawer.dart';
+import 'package:food/view/screen/home_component/burgerGrid.dart';
 
 import 'package:sizer/sizer.dart';
 
@@ -149,7 +150,8 @@ class _HomeState extends State<Home> {
                                                       saleProduct()
                                                 ));
                                           },
-                                            child: burgerGrid(index)
+                                            child: burgerGrid(Index: index)
+
                                         );
 
                                       }
@@ -176,117 +178,7 @@ class _HomeState extends State<Home> {
 
 
 
-  Widget burgerGrid(int Index) {
-    return Container(
-        height: 15.h,
-        width: 100.sp,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(burger),
-            //scale:23
-          ),
-        ),
-        child: Container(
 
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                AppColors.primaryColor.withOpacity(0),
-                Colors.black,
-              ],
-            ),
-          ),
-          child: Stack(
-            children: [
-              Positioned(
-                right: 1.h,
-                top: 1.h,
-                child: CircleAvatar(
-                  backgroundColor: AppColors.tranparentburger,
-                  radius: 15,
-                  child: Icon(
-                    Icons.favorite,
-                    color: AppColors.primaryColor,
-                    size: 16,
-                  ),
-                ),
-              ),
-              Positioned(
-                  top: 13.h,
-                  left: 2.h,
-                  child: Text(
-                    'Crispy Beef Burger',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold),
-                  )
-              ),
-              Positioned(
-                  top: 15.5.h,
-                  left: 2.h,
-                  child: Text(
-                    'by Jhon Jones',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 10,
-
-                    ),
-                  )
-              ),
-              Positioned(
-                top: 18.h,
-                left: 2.h,
-                child: RatingStars(
-                  value: rating,
-                  onValueChanged: (v) {
-                    //
-                    setState(() {
-                      rating = v;
-                    });
-                  },
-                  starSize: 8.sp,
-                  valueLabelVisibility: false,
-                ),
-              ),
-              Positioned(
-                top: 17.9.h,
-                left: 10.h,
-                child: Text('4.5',
-                style :TextStyle(
-                  color: Colors.white,
-                  fontSize: 10
-                )
-                )
-              ),
-              Positioned(
-                  top: 17.9.h,
-                  right: 1.7.h,
-                  child: Icon(Icons.alarm,
-                  color: Colors.white,
-                  size: 10,)
-
-              ),
-              Positioned(
-                  top: 17.9.h,
-                  right: 1.5.h,
-                  child: Text('30 min',
-                      style :TextStyle(
-                          color: Colors.white,
-                          fontSize: 10
-                      )
-                  )
-              )
-            ],
-          ),
-        )
-    );
-  }
 
 
 }
