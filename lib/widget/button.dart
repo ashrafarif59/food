@@ -18,7 +18,7 @@ class PrimaryButton extends StatelessWidget {
   double imageHeight;
   double imageWidth;
   double imagespace;
-
+  bool BoxShadowYN;
 
    Color textColor;
 
@@ -42,7 +42,7 @@ class PrimaryButton extends StatelessWidget {
     this.height = 10,
     this.imagespace =5,
      this.textColor = AppColors.blackColor,
-
+    this.BoxShadowYN = false,
 
     // this.iconName =Icons.arrow_circle_right,
     // this.iconNameColor = AppColors.whiteColor,
@@ -63,6 +63,31 @@ class PrimaryButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(40),
+
+
+          // boxShadow: [
+          //
+          //   BoxShadow(
+          //       color: AppColors.grayshade.withOpacity(.5),
+          //       blurRadius: 10,
+          //   //    offset: Offset(0, 10)
+          //   ),
+          //
+          //   // BoxShadow(
+          //   //     color: Colors.white,
+          //   //     offset: Offset(-10, 0)
+          //   // ),
+          //   // BoxShadow(
+          //   //     color: Colors.white,
+          //   //     offset: Offset(10, 0)
+          //   // )
+          //
+          // ]
+
+
+
+
+
         ),
         child: Titletype.index == 1
             ? Center(

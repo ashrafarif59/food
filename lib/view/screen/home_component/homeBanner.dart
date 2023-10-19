@@ -35,7 +35,8 @@ class _homeBannerState extends State<homeBanner> {
                 physics: ClampingScrollPhysics(),
                 itemCount: homeImage.length + 1,
                 onPageChanged: (index) {
-                  print(index);
+                   //index =index % 7;
+                  // print(index);
                   if (index > 6) {
 
                     homVariable.homeController.animateToPage(0,

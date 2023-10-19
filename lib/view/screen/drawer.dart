@@ -53,7 +53,7 @@ class _drawerWidgetState extends State<drawerWidget> {
                               ),),
                             Transform.scale(
                               scale: .09.h,
-                              child: Switch.adaptive(
+                              child: Switch(
 
                                 activeColor: AppColors.primaryColor,
                                   trackColor: (value)

@@ -66,7 +66,7 @@ class _navigatorState extends State<navigator> {
       //margin: EdgeInsets.only(left: 2.h,top: 1.h,right: 1.h,bottom: 2.h),
       margin: EdgeInsets.all(0),
        width: double.infinity, //index==0 ? 12.w: 40.w,
-      height: 4.h,
+      //height: 4.h,
       decoration: BoxDecoration(
           color: AppColors.primaryColor,
           borderRadius: BorderRadius.circular(30)

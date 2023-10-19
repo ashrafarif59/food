@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'package:food/view/saleProduct.dart';
 import 'package:food/view/screen/drawer.dart';
 
 import 'package:sizer/sizer.dart';
@@ -100,6 +101,7 @@ class _HomeState extends State<Home> {
                                         visualDensity: const VisualDensity(
                                             vertical: -4, horizontal: -4),
                                         selectedColor: AppColors.primaryColor,
+
                                         disabledColor: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(10),
@@ -116,24 +118,42 @@ class _HomeState extends State<Home> {
                             ),
 
                             Padding(
-                              padding: EdgeInsets.only(right: 2.h),
+                              padding: EdgeInsets.only(right: 2.h,top: 1.h),
                               child: Container(
                                 height: MediaQuery.of(context).size.height,
                                 child:
-                                GridView.builder(
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: 16  ,
-                                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
 
-                                        crossAxisCount: 2,
-                                        mainAxisSpacing: 1.5.h,
-                                        crossAxisSpacing: 1.5.h
-                                    ),
-                                    itemBuilder: (context,index)
-                                    {
-                                      return burgerGrid(index);
 
-                                    }
+
+                                MediaQuery.removePadding(
+                                  context: context,
+                                  removeTop: true,
+                                  child: GridView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: 16  ,
+                                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+
+                                          crossAxisCount: 2,
+                                          mainAxisSpacing: 1.5.h,
+                                          crossAxisSpacing: 1.5.h
+                                      ),
+                                      itemBuilder: (context,index)
+                                      {
+                                        return GestureDetector(
+                                          onTap: (){
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      saleProduct()
+                                                ));
+                                          },
+                                            child: burgerGrid(index)
+                                        );
+
+                                      }
+                                  ),
                                 ),
                               ),
                             )
@@ -147,7 +167,8 @@ class _HomeState extends State<Home> {
             ),
 
 
-      ]),
+      ]
+      ),
     );
   }
 

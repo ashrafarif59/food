@@ -33,3 +33,12 @@ const bgedit ='assets/images/bgedit.png';
 
 
 const icononsearch ='assets/images/icononsearch1.png';
+
+const saleProductImage ='assets/images/saleproduct.png';
+
+const minusImage ='assets/images/Vector.png';
+const plusImage ='assets/images/Vectorplus.png';
+
+
+
+
