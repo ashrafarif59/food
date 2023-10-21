@@ -90,13 +90,13 @@ class _burgerGridState extends State<burgerGrid> {
                       widget.rating = v;
                     });
                   },
-                  starSize: 8.sp,
+                  starSize: 6.sp,
                   valueLabelVisibility: false,
                 ),
               ),
               Positioned(
-                  top: 17.9.h,
-                  left: 10.h,
+                  top: 17.7.h,
+                  left: 8.h,
                   child: Text('4.5',
                       style :TextStyle(
                           color: Colors.white,
@@ -105,8 +105,8 @@ class _burgerGridState extends State<burgerGrid> {
                   )
               ),
               Positioned(
-                  top: 17.9.h,
-                  right: 1.7.h,
+                  top: 18.2.h,
+                  right: 5.5.h,
                   child: Icon(Icons.alarm,
                     color: Colors.white,
                     size: 10,)

@@ -127,7 +127,7 @@ class _saleProductDetailState extends State<saleProductDetail> {
                                 //    style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold)
                                 ),
                                 WidgetSpan(
-                                  child: SizedBox(height: 3.h,)
+                                  child: SizedBox(height: 5.h,)
                                 ),
                                 TextSpan(
                                     text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
@@ -137,7 +137,7 @@ class _saleProductDetailState extends State<saleProductDetail> {
                                 //    style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold)
                                 ),
                                 WidgetSpan(
-                                    child: SizedBox(height: 3.h,)
+                                    child: SizedBox(height: 5.h,)
                                 ),
                                 TextSpan(
                                   text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
@@ -147,7 +147,7 @@ class _saleProductDetailState extends State<saleProductDetail> {
                                   //    style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold)
                                 ),
                                 WidgetSpan(
-                                    child: SizedBox(height: 3.h,)
+                                    child: SizedBox(height: 5.h,)
                                 ),
                                 TextSpan(
                                   text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
@@ -158,7 +158,7 @@ class _saleProductDetailState extends State<saleProductDetail> {
                                 ),
 
                                 WidgetSpan(
-                                    child: SizedBox(height: 3.h,)
+                                    child: SizedBox(height: 5.h,)
                                 ),
                                 TextSpan(
                                   text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
@@ -229,7 +229,7 @@ class _saleProductDetailState extends State<saleProductDetail> {
                                   scrollDirection: Axis.vertical,
                                   itemCount: 16  ,
                                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-
+                                      mainAxisExtent :20.h,
                                       crossAxisCount: 2,
                                       mainAxisSpacing: 1.5.h,
                                       crossAxisSpacing: 1.5.h
@@ -245,7 +245,8 @@ class _saleProductDetailState extends State<saleProductDetail> {
                                                       saleProduct()
                                               ));
                                         },
-                                        child: burgerGrid(Index: index)
+                                        child: //Container()
+                                        burgerGrid(Index: index)
 
                                     );
 

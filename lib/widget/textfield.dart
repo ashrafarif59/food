@@ -25,6 +25,7 @@ class TextfieldCustom extends StatelessWidget {
   IconData? prefixicon;
   Color? preIconColor;
   bool? preIconyn;
+  FormFieldValidator<String>? validator;
 
 
   TextfieldCustom({Key? key,required this.label, required this.hinttext,required this.TextController,required this.Keyboardtype, this.obscureText =false,
@@ -42,6 +43,7 @@ class TextfieldCustom extends StatelessWidget {
     this.prefixicon,
     this.preIconColor,
     this.preIconyn = false,
+    this.validator,
 }) : super(key: key);
 
   @override
@@ -57,54 +59,60 @@ class TextfieldCustom extends StatelessWidget {
             child: Text(label ?? 'Enter Text', style: TextStyle(fontFamily: 'Poppins',fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 12),),
           ),
           SizedBox(height:.5.h,),
-          Container(
-            decoration: BoxDecoration(
+          TextFormField(
+            obscureText: obscureText ?? false,
+            controller: TextController ,
+            keyboardType: Keyboardtype,
+            validator:  validator,
+            maxLines: maxLines ?? 1,
+              style: TextStyle(fontSize: 10 ),
+            decoration: InputDecoration(
+              hintText: hinttext,
+              fillColor: fillColor,
+              //isDense: true,
+              //errorStyle: const TextStyle(fontSize: 0.01),
+              // constraints: BoxConstraints(
+              //               maxHeight: 4.h
+              //              ),
+           prefixIcon:
+           preIconyn == false ?
+            null :
+            Icon(prefixicon,
+                           color : preIconColor,
+                          size: 2.h),
+           contentPadding:   EdgeInsets.symmetric( horizontal: 2.h),
+              suffixIcon : avatarOnIcon == true ?Imagechild
+              : Iconyn == true ? IconButton(
+                onPressed: onPress,
+
+               icon: Icon(sufficon,color: iconcolor,size: 2.h,),
+               //  icon: FaIcon(
+               //    FontAwesomeIcons.edit,
+               //    color: Color(0xFF757575),
+               //    size: 22,
+               //  ),
+              ) : null,
+              hintStyle: TextStyle(fontSize: 10 , color: Colors.black),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: borderColor ,width: 2),
+                  borderRadius: BorderRadius.circular(20)
 
 
-            ),
-            child: SizedBox(
-              height: 32,
-              child: TextFormField(
-                obscureText: obscureText ?? false,
-                controller: TextController ,
-                keyboardType: Keyboardtype,
-                maxLines: maxLines ?? 1,
-                  style: TextStyle(fontSize: 10 ),
-                decoration: InputDecoration(
-                  hintText: hinttext,
-                  fillColor: fillColor,
-               prefixIcon:
-               preIconyn == false ?
-                null :
-                Icon(prefixicon,
-                               color : preIconColor,
-                              size: 2.h),
-               contentPadding:   EdgeInsets.symmetric( horizontal: 2.h),
-                  suffixIcon : avatarOnIcon == true ?Imagechild
-                  : Iconyn == true ? IconButton(
-                    onPressed: onPress,
+              ),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: borderColor ,width: 2),
+                  borderRadius: BorderRadius.circular(20)
 
-                   icon: Icon(sufficon,color: iconcolor,size: 2.h,),
-                   //  icon: FaIcon(
-                   //    FontAwesomeIcons.edit,
-                   //    color: Color(0xFF757575),
-                   //    size: 22,
-                   //  ),
-                  ) : null,
-                  hintStyle: TextStyle(fontSize: 10 , color: Colors.black),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: borderColor ,width: 2),
-                      borderRadius: BorderRadius.circular(20)
+              ),
+              errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: borderColor ,width: 2),
+                  borderRadius: BorderRadius.circular(20)
 
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: borderColor ,width: 2),
+                  borderRadius: BorderRadius.circular(20)
 
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: borderColor ,width: 2),
-                      borderRadius: BorderRadius.circular(20)
-
-                  ),
-
-                ),
               ),
             ),
           ),

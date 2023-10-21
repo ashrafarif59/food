@@ -9,6 +9,7 @@ import '../../widget/textfield.dart';
 import 'AccountRegister.dart';
 import 'forgot_password.dart';
 import 'navigator.dart';
+//import 'package:form_field_validator/form_field_validator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  GlobalKey<FormState> formkey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -85,60 +87,70 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 7.h, vertical: 3.h),
-                        child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextfieldCustom(
-                                label: 'Email',
-                                hinttext: 'abc@gmail.com ',
-                                TextController: emailController,
-                                Keyboardtype: TextInputType.emailAddress),
-                            TextfieldCustom(
-                                label: 'Password',
-                                hinttext: '*********** ',
-                                TextController: passwordController,
-                                Keyboardtype: TextInputType.text,
-                                Iconyn: true,
-                                sufficon: Icons.visibility_off_outlined,
-                                obscureText: true,
-                                bottomPadding: .5),
-                            //SizedBox(height: .0001.h ,),
-                            Align(
-                                alignment: Alignment.bottomRight,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              ForgotPassword(),
-                                        ));
-                                  },
-                                  child: Text(
-                                    'Forget Password  ',
-                                    style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold),
+                        child: Form(
+                          key: formkey,
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextfieldCustom(
+                                  label: 'Email',
+                                  hinttext: 'abc@gmail.com ',
+                                  TextController: emailController,
+                                  Keyboardtype: TextInputType.emailAddress,
+                                  validator:(String? val) {
+                                    if (val!.isEmpty)
+                                    {return 'Required';}
+                                  }
                                   ),
-                                )),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            PrimaryButton(
-                                Titletype: titleType.OnlyTitle,
-                                title: 'LOGIN',
-                                iconName: Icons.arrow_forward,
-                                width: 40.w,
-                                height: 4.1.h,
-                                onPress: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => navigator(),
-                                      ));
-                                }),
-                          ],
+                              TextfieldCustom(
+                                  label: 'Password',
+                                  hinttext: '*********** ',
+                                  TextController: passwordController,
+                                  Keyboardtype: TextInputType.text,
+                                  Iconyn: true,
+                                  sufficon: Icons.visibility_off_outlined,
+                                  obscureText: true,
+                                  bottomPadding: .5),
+                              //SizedBox(height: .0001.h ,),
+                              Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ForgotPassword(),
+                                          ));
+                                    },
+                                    child: Text(
+                                      'Forget Password  ',
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )),
+                              SizedBox(
+                                height: 5.h,
+                              ),
+                              PrimaryButton(
+                                  Titletype: titleType.OnlyTitle,
+                                  title: 'LOGIN',
+                                  iconName: Icons.arrow_forward,
+                                  width: 40.w,
+                                  height: 4.1.h,
+                                  onPress: () {
+                                    if (formkey!.currentState!.validate()) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => navigator(),
+                                          ));
+                                    }
+                                  }),
+                            ],
+                          ),
                         ),
                       ),
                     ],
