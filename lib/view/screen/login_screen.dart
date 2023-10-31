@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/widget/CustomTextField.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helper/colors.dart';
@@ -19,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  double textHeight =4.0;
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -92,15 +94,29 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Column(
                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              SizedBox(
+                                height: 4.h,
+                                  child: GPATextField(
+                                      validator:(String? val) {
+                                        if (val!.isEmpty)
+                                        {
+                                          return null;
+                                        }
+                                      }
+                                  )
+                              ),
                               TextfieldCustom(
                                   label: 'Email',
                                   hinttext: 'abc@gmail.com ',
                                   TextController: emailController,
                                   Keyboardtype: TextInputType.emailAddress,
+                                   textheight: textHeight,
                                   validator:(String? val) {
                                     if (val!.isEmpty)
-                                    {return 'Required';}
-                                  }
+                                    {
+                                    return null;
+                                    }
+                                    }
                                   ),
                               TextfieldCustom(
                                   label: 'Password',

@@ -112,6 +112,16 @@ class _saleProductDetailState extends State<saleProductDetail> {
                           ),
                         ),
                         SizedBox(height: 3.h,),
+                        Text('Heat oil in a wok, add finely chopped chicken, cook till it changes'
+                          ' color, add ginger garlic paste with dry seasonings, lemon juice,'
+                          ' cook till chicken tender and mixture dry, remove the chicken and leave aside.',),
+                        SizedBox(height: 2.h,),
+
+                        Text('Heat oil in a wok, add finely chopped chicken, cook till it changes'
+                            ' color, add ginger garlic paste with dry seasonings, lemon juice,'
+                            ' cook till chicken tender and mixture dry, remove the chicken and leave aside.',
+                        style: TextStyle(fontSize: 15),),
+                        SizedBox(height: 2.h,),
                         Container(
                           height: languageListIndex==0 ? 53.h : 35 .h,
                           child:languageListIndex==0 ?

@@ -5,6 +5,7 @@ import 'package:food/view/screen/search.dart';
 import 'package:sizer/sizer.dart';
 import '../../../helper/colors.dart';
 import '../../../helper/image.dart';
+import '../../Test.dart';
 
 
 class homeSliverAppBar extends StatelessWidget {
@@ -25,7 +26,7 @@ class homeSliverAppBar extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => notification(),
+                  builder: (context) => test(),
                 ));
           },
          icon: Icon(

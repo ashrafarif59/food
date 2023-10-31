@@ -15,6 +15,7 @@ class productQtyIncrement extends StatefulWidget {
 }
 
 class _productQtyIncrementState extends State<productQtyIncrement> {
+  int qty =1;
   @override
   Widget build(BuildContext context) {
     return  Column(
@@ -104,9 +105,25 @@ class _productQtyIncrementState extends State<productQtyIncrement> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    incrementContainer (minusImage),
-                    Text('1'),
-                    incrementContainer (plusImage)
+                    InkWell(
+                      onTap: (){
+                        if (qty>1)
+                          {setState(() {
+                            qty--;
+                          });}
+
+
+                      },
+                        child: incrementContainer (minusImage)
+                    ),
+                    Text(qty.toString()),
+                    InkWell(
+                        onTap: (){
+                          setState(() {
+                            qty++;
+                          });
+                        },
+                        child: incrementContainer (plusImage))
 
                   ],
                 )
