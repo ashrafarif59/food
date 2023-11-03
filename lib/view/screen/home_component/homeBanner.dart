@@ -33,19 +33,24 @@ class _homeBannerState extends State<homeBanner> {
             //color:Colors.red,
             child: PageView.builder(
                 physics: ClampingScrollPhysics(),
-                itemCount: homeImage.length + 1,
+               // itemCount: homeImage.length + 1,
                 onPageChanged: (index) {
                    //index =index % 7;
                   // print(index);
-                  if (index > 6) {
 
-                    homVariable.homeController.animateToPage(0,
-                        duration: Duration(milliseconds: 50),
-                        curve: Curves.slowMiddle);
-                  }
+
+                  // if (index > 6) {
+                  //
+                  //   homVariable.homeController.animateToPage(0,
+                  //       duration: Duration(milliseconds: 50),
+                  //       curve: Curves.slowMiddle);
+                  // }
 
                   setState(() {
-                    homVariable.homeCurrentIndex = index ;
+
+
+                    homVariable.homeCurrentIndex =  index % homeImage.length ;
+                    print(index.toString() + ' what this ' + homeImage.length.toString() + ' '+homVariable.homeCurrentIndex.toString());
                   });
 
                 },
@@ -54,7 +59,8 @@ class _homeBannerState extends State<homeBanner> {
                 homVariable.homeController, //PageController(viewportFraction: 0.5),
                 //  itemCount:5,
                 itemBuilder: (context, index) {
-                  return foodBanner(index);
+
+                  return foodBanner(index % homeImage.length);
                 }),
           ),
         ),
@@ -63,7 +69,7 @@ class _homeBannerState extends State<homeBanner> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-                homeImage.length - 1,
+                homeImage.length ,
                     (index) => InkWell(
                     onTap: () {
 

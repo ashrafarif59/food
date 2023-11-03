@@ -7,6 +7,8 @@ import '../../../widget/button.dart';
 import '../../../widget/textfield.dart';
 
 import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
+
 
 class getLocation extends StatefulWidget {
    getLocation({Key? key}) : super(key: key);
@@ -18,8 +20,13 @@ class getLocation extends StatefulWidget {
 class _getLocationState extends State<getLocation> {
 TextEditingController locationController = TextEditingController();
 String? Latitude="1" , Longitude="1" ;
+List<Location> locations =[];
+
   @override
   Widget build(BuildContext context) {
+
+
+
 
 
     Future<bool> checkPermission() async{
@@ -38,9 +45,10 @@ String? Latitude="1" , Longitude="1" ;
       if(permission == LocationPermission.deniedForever) {return false;}
       return true;
     }
-    getCurrentLocation  () async
+    getCurrentLocation  (String Address) async
     {
       bool isEnabled = await checkPermission();
+
 
       if (isEnabled)
         {
@@ -48,9 +56,21 @@ String? Latitude="1" , Longitude="1" ;
           Latitude = location.latitude.toString();
           Longitude = location.longitude.toString();
 
-          setState(() {
-            print(Longitude);
-          });
+
+          if (Address.isNotEmpty)
+          {
+            try {locations = await locationFromAddress(Address);}
+            catch(e){locations=[];}
+
+
+          }
+
+        //  locations.add(Latitude);
+
+          print(locations.toString());
+
+           setState(() {
+           });
 
         }
     }
@@ -79,11 +99,27 @@ String? Latitude="1" , Longitude="1" ;
               width: 65.w,
               height: 5.h,
               onPress: (){
-                getCurrentLocation();
+                getCurrentLocation(locationController.text);
               }
           ),
           Text(Longitude.toString(),style: TextStyle(color: Colors.black),),
           Text(Latitude.toString(),style: TextStyle(color: Colors.black),),
+          FutureBuilder(
+            future: getCurrentLocation(locationController.text),
+              builder: (context,snapshot){
+            return Expanded(
+              child: ListView.builder(
+                   itemCount: locations.length,
+                  itemBuilder: (context,index)
+                  {return Column(
+                  children: [
+                  Text('Longitute '+locations[index].longitude.toString()),
+                    Text('Latitue '+locations[index].latitude.toString())
+                  ],);
+                      }
+              ),
+            );
+          })
         ],
       ),
     ),

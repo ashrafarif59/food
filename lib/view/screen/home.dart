@@ -88,7 +88,8 @@ class _HomeState extends State<Home> {
                                   itemBuilder: (context, index) {
                                     return Padding(
                                       padding: EdgeInsets.only(right: 1.h),
-                                      child: ChoiceChip(
+                                      child: RawChip(
+                                        showCheckmark: false,
                                         label: Text(
                                           ChoiceList[index],
                                           style: TextStyle(

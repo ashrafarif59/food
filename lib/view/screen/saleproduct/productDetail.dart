@@ -133,43 +133,35 @@ class _saleProductDetailState extends State<saleProductDetail> {
                                 TextSpan(
                                     text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
                                 ' color, add ginger garlic paste with dry seasonings, lemon juice,'
-                                ' cook till chicken tender and mixture dry, remove the chicken and leave aside.',
+                                ' cook till chicken tender and mixture dry, remove the chicken and leave aside.\n\n',
                                 //    style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold)
                                 ),
-                                WidgetSpan(
-                                  child: SizedBox(height: 5.h,)
-                                ),
+
                                 TextSpan(
                                     text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
                                     ' color, add ginger garlic paste with dry seasonings, lemon juice,'
                                     ' cook till chicken tender and mixture dry, remove the chicken and'
-                                    ' leave aside.',
+                                    ' leave aside.\n\n',
                                 //    style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold)
                                 ),
-                                WidgetSpan(
-                                    child: SizedBox(height: 5.h,)
-                                ),
+
                                 TextSpan(
                                   text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
                                       ' color, add ginger garlic paste with dry seasonings, lemon juice,'
                                       ' cook till chicken tender and mixture dry, remove the chicken and'
-                                      ' leave aside.',
-                                  //    style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold)
-                                ),
-                                WidgetSpan(
-                                    child: SizedBox(height: 5.h,)
-                                ),
-                                TextSpan(
-                                  text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
-                                      ' color, add ginger garlic paste with dry seasonings, lemon juice,'
-                                      ' cook till chicken tender and mixture dry, remove the chicken and'
-                                      ' leave aside.',
+                                      ' leave aside.\n\n',
                                   //    style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold)
                                 ),
 
-                                WidgetSpan(
-                                    child: SizedBox(height: 5.h,)
+                                TextSpan(
+                                  text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
+                                      ' color, add ginger garlic paste with dry seasonings, lemon juice,'
+                                      ' cook till chicken tender and mixture dry, remove the chicken and'
+                                      ' leave aside.\n\n',
+                                  //    style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold)
                                 ),
+
+
                                 TextSpan(
                                   text: 'Heat oil in a wok, add finely chopped chicken, cook till it changes'
                                       ' color, add ginger garlic paste with dry seasonings, lemon juice,'

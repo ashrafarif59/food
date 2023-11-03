@@ -29,14 +29,16 @@ class _navigatorState extends State<navigator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+     //   resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
+            iconSize:10,
             currentIndex: selectIndex,
             backgroundColor: Colors.black,
             onTap: navSelected,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white,
+            selectedFontSize:  0.0, unselectedFontSize: 0.0,
             items: [
               BottomNavigationBarItem(icon: selectIndex==0 ?
               navbar(Icons.home,'HOME',selectIndex)
@@ -62,27 +64,31 @@ class _navigatorState extends State<navigator> {
 
   Widget navbar(IconData icon,String title,int index )
   {
-    return  Container(
-      //margin: EdgeInsets.only(left: 2.h,top: 1.h,right: 1.h,bottom: 2.h),
-      margin: EdgeInsets.all(0),
-       width: double.infinity, //index==0 ? 12.w: 40.w,
-      //height: 4.h,
-      decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(30)
-      ),
 
-      child: Row  (children: [
-        SizedBox(width: 1.h,),
-        Icon(icon,size: 30,color: Colors.white,),
-        SizedBox(width: .5.h,),
-        Text(title,
-          style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: index ==0 ? 14 :10
-          ),)
-      ],),
+    return  Padding(
+      padding: EdgeInsets.only(left: 2.h,right: 2.h),
+      child: Container(
+        //margin: EdgeInsets.only(left: 2.h,top: 1.h,right: 1.h,bottom: 2.h),
+        margin: EdgeInsets.all(0),
+         width: double.infinity, //index==0 ? 12.w: 40.w,
+        //height: 4.h,
+        decoration: BoxDecoration(
+            color: AppColors.primaryColor,
+            borderRadius: BorderRadius.circular(30)
+        ),
+
+        child: Row  (children: [
+          SizedBox(width: 1.h,),
+          Icon(icon,size:index ==1 ? 25: 30,color: Colors.white,),
+          SizedBox(width: .5.h,),
+          Text(title,
+            style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: index ==0 ? 14 :index ==1 ? 9 :10
+            ),)
+        ],),
+      ),
     );
   }
 }

@@ -12,7 +12,7 @@ class homeVariable
 
 }
 
-List<String> homeImage = [food, ban2, ban3, ban4, ban5, ban6, ban7, food];
+List<String> homeImage = [food, ban2, ban3, ban4, ban5, ban6, ban7];
 List<String> ChoiceList = [
   'All',
   'BBQ',

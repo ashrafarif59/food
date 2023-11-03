@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   hinttext: 'abc@gmail.com ',
                                   TextController: emailController,
                                   Keyboardtype: TextInputType.emailAddress,
-                                   textheight: textHeight,
+                                  // textheight: textHeight,
                                   validator:(String? val) {
                                     if (val!.isEmpty)
                                     {

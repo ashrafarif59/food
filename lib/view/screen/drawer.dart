@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/helper/colors.dart';
+import 'package:food/test/geo_locator.dart';
 import 'package:food/view/screen/setting.dart';
 import 'package:food/view/screen/test/getLocation.dart';
 import 'package:sizer/sizer.dart';
@@ -116,6 +117,29 @@ class _drawerWidgetState extends State<drawerWidget> {
                   style: TextStyle(
                     fontSize: 12
                   ),),
+                  trailing: Icon(Icons.arrow_forward_ios,color: AppColors.primaryColor,size: 15),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 4.h),
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GeoLocationDart(),
+                    ));
+              },
+              child: Card(
+                child: ListTile(
+                  visualDensity: VisualDensity(vertical: -3),
+                  leading: Icon(Icons.settings,color: AppColors.primaryColor,size: 20,),
+                  title: Text('Location',
+                    style: TextStyle(
+                        fontSize: 12
+                    ),),
                   trailing: Icon(Icons.arrow_forward_ios,color: AppColors.primaryColor,size: 15),
                 ),
               ),
