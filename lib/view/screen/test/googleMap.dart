@@ -33,6 +33,7 @@ class _googleMapState extends State<googleMap> {
     // TODO: implement initState
     super.initState();
     _marker.addAll(addList);
+    print('');
   }
   @override
   Widget build(BuildContext context) {
